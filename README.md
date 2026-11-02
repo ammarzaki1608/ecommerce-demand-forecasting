@@ -1,11 +1,11 @@
-# 📦 E-Commerce Demand Forecasting & Inventory Optimization
+# E-Commerce Demand Forecasting & Inventory Optimization
 
 A data science project that combines machine learning forecasting with 
 inventory optimization to reduce supply chain costs in e-commerce operations.
 
 ---
 
-## 📂 Dataset
+## Dataset
 **Source:** [Brazilian E-Commerce by Olist](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce)  
 Real-world e-commerce transaction data from Olist, a Brazilian marketplace 
 platform — containing 110K orders across 2 years with product, seller, 
@@ -15,19 +15,24 @@ The demand forecasting and inventory optimization methodology demonstrated
 here is platform and geography agnostic — directly applicable to Malaysian 
 e-commerce platforms such as Shopee, Lazada, and Zalora.
 
-## 💼 Business Problem
+## Business Problem
 E-commerce companies face a constant tradeoff — hold too much stock and 
 capital is tied up in warehouses; hold too little and customers can't buy. 
 This project builds a forecast-driven inventory system that minimizes total 
 cost while maintaining target service levels.
 
-## 📊 Key Results
-- **RM 59,808 saved** (70.2%) over 180 days for a single product category
-- **100% service level** achieved vs 95% target
-- **71% reduction** in average inventory held (272 vs 942 units)
-- Annualized savings of approximately **RM 119,600 per category**
+## Assumptions
+- The Olist dataset is from Brazil. The costs below are my own
+  assumptions in RM, not real Olist costs or converted prices.
+- Holding cost: RM 0.50 per unit per day
+- Stockout cost: RM 15 per unit
 
-## 🛠️ Tech Stack
+## Key Results (under the assumed costs above)
+- **RM 59,808 lower total cost** (70.2%) over 180 days, one product category
+- **71% less average inventory** (272 vs 942 units)
+- **100% service level** vs a 95% target (see note below)
+
+## Tech Stack
 | Tool | Purpose |
 |------|---------|
 | Python, Pandas, NumPy | Data processing & feature engineering |
@@ -38,9 +43,9 @@ cost while maintaining target service levels.
 | Pytest | Unit tests for the inventory formulas |
 | Git & GitHub | Version control |
 
-## 📁 Project Structure
+## Project Structure
 
-demand-forecasting-malaysia/
+ecommerce-demand-forecasting/
 ├── data/
 │   ├── raw/           ← original data (not tracked by Git)
 │   └── processed/     ← cleaned data (not tracked by Git)
@@ -62,7 +67,7 @@ Notebooks and the dashboard both import their forecasting and inventory logic
 from `src/` rather than duplicating it, so a fix in one place applies
 everywhere.
 
-## 🚀 How to Reproduce
+## How to Reproduce
 1. Clone this repository
 2. Create and activate a virtual environment:
 ```bash
@@ -85,14 +90,14 @@ everywhere.
    streamlit run src/dashboard.py
 ```
 
-## 📓 Project Walkthrough
+## Project Walkthrough
 | Notebook | Description |
 |----------|-------------|
 | `01_eda.ipynb` | Data cleaning, merging, time-series EDA across 110K orders |
 | `02_forecasting.ipynb` | Baseline, XGBoost models with feature importance analysis |
 | `03_inventory_optimization.ipynb` | Safety stock, reorder point, cost simulation |
 
-## 💡 Key Insights
+## Key Insights
 - **Rolling averages dominate feature importance** — recent demand history 
   is the strongest predictor of future demand
 - **Model complexity doesn't always win** — naive baseline outperformed 
@@ -107,6 +112,6 @@ everywhere.
   lives in one shared module (`src/inventory.py`) instead of being
   duplicated across notebooks and the dashboard
 
-## 👤 Author
+## Author
 **Ammar Zaki** 
 Skills: Python, SQL, Power BI, Machine Learning, Supply Chain Analytics
